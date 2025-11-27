@@ -1,11 +1,92 @@
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
-  }
-}
-</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slatko Supply Manager</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: '#ff2d91',
+              blue: '#00d0e8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+    }
+
+    /* Custom Scrollbar */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Brand Classes */
+    .text-brand-pink {
+      color: #ff2d91;
+    }
+
+    .bg-brand-pink {
+      background-color: #ff2d91;
+    }
+
+    .border-brand-pink {
+      border-color: #ff2d91;
+    }
+
+    .text-brand-blue {
+      color: #00d0e8;
+    }
+
+    .bg-brand-blue {
+      background-color: #00d0e8;
+    }
+
+    .brand-gradient {
+      background: linear-gradient(135deg, #ff2d91 0%, #d6257a 100%);
+    }
+
+    .brand-gradient-soft {
+      background: linear-gradient(135deg, #fff0f7 0%, #eefcff 100%);
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+        "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+        "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
+      }
+    }
+    </script>
 </head>
-  <body class="bg-slate-50 text-slate-900 antialiased">
-    <div id="root"></div>
-  </body>
+
+<body class="bg-slate-50 text-slate-900 antialiased">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
 </html>
