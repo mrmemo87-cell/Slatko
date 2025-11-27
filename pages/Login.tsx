@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { UserRole } from '../types';
 import { Button } from '../components/UI';
 import { useResource } from '../hooks/useResource';
+import { seedDatabase } from '../lib/seed';
 
 interface LoginProps {
   onLogin: (role: UserRole, name: string) => void;
@@ -32,13 +33,21 @@ export const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
         <div className="space-y-8">
           <div className="space-y-3">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Select Role Demo</label>
+            <div className="flex justify-between items-center">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-widest ml-1">Select Role Demo</label>
+              <button onClick={seedDatabase} className="text-xs text-blue-500 hover:underline">Seed Data</button>
+            </div>
             <div className="space-y-3">
               {loading && <div className="text-center text-slate-400 py-4">Loading users...</div>}
               {error && <div className="text-center text-red-400 py-4">Error loading users</div>}
-              {!loading && users.length === 0 && <div className="text-center text-slate-400 py-4">No users found</div>}
+              {!loading && (!users || users.length === 0) && (
+                <div className="text-center text-slate-400 py-4">
+                  <p>No users found.</p>
+                  <p className="text-xs mt-1">Click "Seed Data" above to populate.</p>
+                </div>
+              )}
 
-              {users.map((user: any) => (
+              {users?.map((user: any) => (
                 <div
                   key={user.id}
                   onClick={() => setSelectedUser(user)}
