@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand-pink: #ff2d91;
+    --color-brand-blue: #00d0e8;
+  }
+  
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-brand-pink { color: theme('colors.brand.pink'); }
+  .bg-brand-pink { background-color: theme('colors.brand.pink'); }
+  .border-brand-pink { border-color: theme('colors.brand.pink'); }
+  
+  .text-brand-blue { color: theme('colors.brand.blue'); }
+  .bg-brand-blue { background-color: theme('colors.brand.blue'); }
+  
+  .brand-gradient {
+    background: linear-gradient(135deg, #ff2d91 0%, #d6257a 100%);
+  }
+  
+  .brand-gradient-soft {
+    background: linear-gradient(135deg, #fff0f7 0%, #eefcff 100%);
+  }
+}
