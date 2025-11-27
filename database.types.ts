@@ -39,6 +39,7 @@ export interface Database {
                     address: string
                     phone: string
                     balance: number
+                    total_sales: number
                     last_visit: string | null
                     created_at: string
                 }
@@ -48,6 +49,7 @@ export interface Database {
                     address: string
                     phone: string
                     balance?: number
+                    total_sales?: number
                     last_visit?: string | null
                     created_at?: string
                 }
@@ -57,6 +59,7 @@ export interface Database {
                     address?: string
                     phone?: string
                     balance?: number
+                    total_sales?: number
                     last_visit?: string | null
                     created_at?: string
                 }

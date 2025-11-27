@@ -30,21 +30,6 @@ export const ManagementPage: React.FC<ManagementPageProps> = ({ type }) => {
         <Button variant="outline" size="sm" icon={<Edit size={14} />}>Edit Profile</Button>
       </div>
 
-      <div className="grid grid-cols-3 gap-4">
-        <Card title="Last Order">
-          <p className="text-2xl font-bold text-slate-800">Oct 26</p>
-          <p className="text-sm text-slate-500">Total: $155.00</p>
-        </Card>
-        <Card title="Total Spent">
-          <p className="text-2xl font-bold text-[#ff2d91]">$4,250</p>
-          <p className="text-sm text-slate-500">Lifetime value</p>
-        </Card>
-        <Card title="Returns">
-          <p className="text-2xl font-bold text-slate-800">12</p>
-          <p className="text-sm text-slate-500">Items returned</p>
-        </Card>
-      </div>
-
       <h4 className="font-bold text-lg mt-4">Recent History</h4>
       <div className="bg-white border border-slate-100 rounded-2xl overflow-hidden">
         <table className="w-full text-left text-sm">

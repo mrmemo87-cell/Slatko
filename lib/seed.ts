@@ -28,16 +28,14 @@ export const seedDatabase = async () => {
     ];
 
     console.log('Seeding Users...');
-    const { error: usersError } = await supabase.from('users').upsert(MOCK_USERS, { onConflict: 'email' });
+    const { error: usersError } = await supabase.from('users').insert(MOCK_USERS);
     if (usersError) console.error('Error seeding users:', usersError);
 
     console.log('Seeding Products...');
-    const { error: productsError } = await supabase.from('products').upsert(MOCK_PRODUCTS, { onConflict: 'sku' });
+    const { error: productsError } = await supabase.from('products').insert(MOCK_PRODUCTS);
     if (productsError) console.error('Error seeding products:', productsError);
 
     console.log('Seeding Clients...');
-    // Clients don't have a unique key in our simple schema, so we'll just insert.
-    // In a real app, you'd want a unique constraint on name or phone.
     const { error: clientsError } = await supabase.from('clients').insert(MOCK_CLIENTS);
     if (clientsError) console.error('Error seeding clients:', clientsError);
 
