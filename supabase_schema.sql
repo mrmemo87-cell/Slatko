@@ -1,8 +1,17 @@
+-- WARNING: This will delete all existing data in these tables!
+-- We are dropping tables to ensure they are recreated with the correct columns.
+
+drop table if exists public.order_items cascade;
+drop table if exists public.orders cascade;
+drop table if exists public.products cascade;
+drop table if exists public.clients cascade;
+drop table if exists public.users cascade;
+
 -- Enable UUID extension
 create extension if not exists "uuid-ossp";
 
 -- Users Table
-create table if not exists public.users (
+create table public.users (
   id uuid default uuid_generate_v4() primary key,
   name text not null,
   role text not null check (role in ('ADMIN', 'WORKER', 'DELIVERY')),
@@ -11,7 +20,7 @@ create table if not exists public.users (
 );
 
 -- Clients Table
-create table if not exists public.clients (
+create table public.clients (
   id uuid default uuid_generate_v4() primary key,
   name text not null,
   address text not null,
@@ -22,7 +31,7 @@ create table if not exists public.clients (
 );
 
 -- Products Table
-create table if not exists public.products (
+create table public.products (
   id uuid default uuid_generate_v4() primary key,
   name text not null,
   sku text unique not null,
@@ -34,7 +43,7 @@ create table if not exists public.products (
 );
 
 -- Orders Table
-create table if not exists public.orders (
+create table public.orders (
   id uuid default uuid_generate_v4() primary key,
   client_id uuid references public.clients(id) on delete set null,
   date timestamp with time zone default timezone('utc'::text, now()) not null,
@@ -44,7 +53,7 @@ create table if not exists public.orders (
 );
 
 -- Order Items Table
-create table if not exists public.order_items (
+create table public.order_items (
   id uuid default uuid_generate_v4() primary key,
   order_id uuid references public.orders(id) on delete cascade,
   product_id uuid references public.products(id) on delete set null,
@@ -60,7 +69,7 @@ alter table public.products enable row level security;
 alter table public.orders enable row level security;
 alter table public.order_items enable row level security;
 
--- Create policies to allow all access (for demo purposes)
+-- Create policies to allow all access
 create policy "Enable all access for all users" on public.users for all using (true) with check (true);
 create policy "Enable all access for all users" on public.clients for all using (true) with check (true);
 create policy "Enable all access for all users" on public.products for all using (true) with check (true);
